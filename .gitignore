@@ -7,11 +7,12 @@ test_results/
 # Virtual environment
 venv/
 .env/
-# Ignore everything in the dataset folder...
-Data/*
+# Ignore everything under Data
+Data/**
 
-# ...except the folder itself
+# But don't ignore the folder itself or the .gitkeep file
 !Data/
+!Data/.gitkeep
 # Distribution / packaging
 build/
 dist/
