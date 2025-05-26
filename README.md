@@ -69,7 +69,7 @@ source venv/bin/activate
 
 ---
 
-### ✅ 2. Create and Activate a Virtual Environment (Windows)
+### 2. Create and Activate a Virtual Environment (Windows)
 
 Open **Command Prompt** or **PowerShell**, then:
 
@@ -77,7 +77,7 @@ Open **Command Prompt** or **PowerShell**, then:
 python -m venv venv
 venv\Scripts\activate
 
-### ✅ 2. Install Requirements
+###  2. Install Requirements
 
 ```bash
 pip install --upgrade pip
@@ -132,11 +132,6 @@ Output predictions will be saved to:
 python source/yolov5_facemask.py --config config.yaml
 ```
 
-Output predictions will be saved to:
-
-```
-./test_results/
-```
 ---
 
 ## 🧠 Model Architecture
