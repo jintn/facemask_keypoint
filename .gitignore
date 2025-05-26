@@ -3,10 +3,11 @@ __pycache__/
 *.py[cod]
 *.so
 
+test_results/
 # Virtual environment
 venv/
 .env/
-
+Data/ACIT4630_dataset
 # Distribution / packaging
 build/
 dist/

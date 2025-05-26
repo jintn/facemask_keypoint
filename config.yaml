@@ -1,0 +1,50 @@
+data:
+  train_images: './Data/ACIT4630_dataset/train'
+  train_heatmaps: './Data/ACIT4630_dataset/heatmaps_from_facemesh'
+  train_labels: './Data/ACIT4630_dataset/train_labels'
+  val_images:   './Data/ACIT4630_dataset/val'
+  val_heatmaps: './Data/ACIT4630_dataset/heatmaps_from_facemesh_val'
+  val_labels:   './Data/ACIT4630_dataset/val_labels'
+  test_images:  './Data/ACIT4630_dataset/test'
+  test_heatmaps: './Data/ACIT4630_dataset/heatmaps_from_facemesh_test'
+  test_labels: './Data/ACIT4630_dataset/test_labels'  
+  
+# Model configuration
+model:
+  cfg_path: "./Source/yolov5/models/yolov5s.yaml"  # YOLOv5 configuration
+  num_classes: 3  # nomask, mask, incorrect
+  input_channels: 4  # RGB + heatmap
+  pretrained_weights: null  # Path to pretrained weights if any
+
+# Training parameters
+train:
+  batch_size: 8
+  epochs: 200
+  learning_rate: 0.001
+  img_size: 640
+  device: "cpu"  # or "cpu"
+  workers: 2
+  save_dir: "./SavedModel"
+
+# Validation parameters
+val:
+  batch_size: 8
+  conf_thres: 0.1
+  iou_thres: 0.45
+  img_size: 640
+
+# Test parameters
+test:
+  model_path: "./SavedModel/best_model.pt"
+  batch_size: 8
+  conf_thres: 0.45
+  iou_thres: 0.45
+  img_size: 640
+  save_predictions: true
+  output_dir: "./test_results"
+
+# Class names
+class_names:
+  0: "mask_on"
+  1: "mask_off"
+  2: "mask_incorrect"
