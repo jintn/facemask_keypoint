@@ -7,7 +7,11 @@ test_results/
 # Virtual environment
 venv/
 .env/
-Data/ACIT4630_dataset
+# Ignore everything in the dataset folder...
+Data/*
+
+# ...except the folder itself
+!Data/
 # Distribution / packaging
 build/
 dist/

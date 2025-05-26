@@ -62,10 +62,7 @@ def debug_predictions(model, test_loader, device, config, num_samples=5):
             
             # Get raw outputs
             outputs = model(imgs)
-            print(f"\nRaw output shape: {outputs[0].shape}")
-            print(f"Sample raw predictions (first 5):")
-            print(outputs[0][0, :5, :])  # First image, first 5 predictions
-            
+
             # Process outputs
             predictions = process_yolo_output(
                 outputs,
@@ -249,25 +246,16 @@ def test_model(config_path=None, model_path=None, test_data_path=None):
     print("="*50)
     
     # Try with different confidence thresholds
-    conf_thresholds = [0.001, 0.01, 0.1, 0.25]
-    for conf_thresh in conf_thresholds:
-        print(f"\nTesting with conf_thresh={conf_thresh}")
-        results = validate_model_simple(
+    conf_thresh = config['test'].get('conf_thres', 0.25)
+    results = validate_model_simple(
             model=model,
             val_dataloader=test_loader,
             device=device,
             conf_thres=conf_thresh,
             iou_thres=config['test']['iou_thres'],
             img_size=config['test']['img_size']
-        )
-        
-        print(f"  mAP@0.5: {results['mAP']:.4f}")
-        print(f"  Precision: {results['precision']:.4f}")
-        print(f"  Recall: {results['recall']:.4f}")
-        
-        if results['mAP'] > 0:
-            break
-    
+    )
+
     # Use best results
     print("\n" + "="*50)
     print("FINAL TEST RESULTS")
